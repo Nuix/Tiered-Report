@@ -1,0 +1,20 @@
+[
+	{
+		"enabled": false,
+		"field_name": "UnconfiguredTemplate1",
+		"report_label": "Unconfigured Template 1",
+		"value_if_missing": "No Value"
+	},
+	{
+		"enabled": false,
+		"field_name": "UnconfiguredTemplate2",
+		"report_label": "UnconfiguredTemplate2",
+		"value_if_missing": "No Value"
+	},
+	{
+		"enabled": false,
+		"field_name": "UnconfiguredTemplate3",
+		"report_label": "Unconfigured Template 3",
+		"value_if_missing": "No Value"
+	}
+]
