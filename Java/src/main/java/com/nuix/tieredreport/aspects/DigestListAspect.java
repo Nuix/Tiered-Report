@@ -14,6 +14,11 @@ import nuix.DigestListStore;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the Nuix digest lists they belong to.
+ * @author Jason Wells
+ *
+ */
 public class DigestListAspect extends AbstractItemAspect {
 
 	@Override

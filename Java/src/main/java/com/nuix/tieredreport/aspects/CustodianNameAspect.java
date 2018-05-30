@@ -11,6 +11,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the custodian name assigned to them.
+ * @author Jason Wells
+ *
+ */
 public class CustodianNameAspect extends AbstractItemAspect {
 
 	@Override

@@ -12,6 +12,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items by their batch load's ID.
+ * @author Jason Wells
+ *
+ */
 public class BatchLoadIDAspect extends AbstractItemAspect {
 
 	@Override

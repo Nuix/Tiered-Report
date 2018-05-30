@@ -6,6 +6,12 @@ import org.roaringbitmap.RoaringBitmap;
 
 import com.nuix.tieredreport.aspects.ItemAspect;
 
+/***
+ * Represents the various settings associated to generating a workbook sheet in the
+ * generated report workbook.
+ * @author Jason Wells
+ *
+ */
 public class ReportSheetInfo {
 	private List<ItemAspect> reportedAspects;
 	private String sheetName = "Report";

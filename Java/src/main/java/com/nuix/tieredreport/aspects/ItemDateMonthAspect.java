@@ -12,6 +12,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on their item date's month.
+ * @author Jason Wells
+ *
+ */
 public class ItemDateMonthAspect extends AbstractItemAspect {
 
 	@Override

@@ -13,6 +13,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based upon their item date's year and month.
+ * @author Jason Wells
+ *
+ */
 public class ItemDateYearMonthAspect extends AbstractItemAspect {
 
 	private DateTimeZone investigationZone;

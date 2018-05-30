@@ -13,6 +13,11 @@ import nuix.Item;
 import nuix.ProductionSet;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the name of the production sets the items belong to.
+ * @author Jason Wells
+ *
+ */
 public class ProductionSetAspect extends AbstractItemAspect {
 
 	@Override

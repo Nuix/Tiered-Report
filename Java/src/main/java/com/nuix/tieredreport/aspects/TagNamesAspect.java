@@ -12,6 +12,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the tags assigned to them.
+ * @author Jason Wells
+ *
+ */
 public class TagNamesAspect extends AbstractItemAspect{
 
 	@Override

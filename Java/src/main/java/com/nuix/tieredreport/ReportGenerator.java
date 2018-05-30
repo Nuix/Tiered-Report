@@ -16,6 +16,12 @@ import com.aspose.cells.Workbook;
 import com.aspose.cells.Worksheet;
 import com.nuix.tieredreport.aspects.ItemAspect;
 
+/***
+ * This class takes the TieredReportData collected from one or more cases based on one or
+ * more ItemAspect object and generates the actual report spreadsheets.
+ * @author Jason Wells
+ *
+ */
 public class ReportGenerator {
 	private static int currentMetricColumns = 0;
 	private static int currentAdditionalItemCountColumns = 0;

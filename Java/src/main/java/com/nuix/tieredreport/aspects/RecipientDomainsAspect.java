@@ -16,6 +16,11 @@ import nuix.Communication;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the recipient address domains associated with those items.
+ * @author Jason Wells
+ *
+ */
 public class RecipientDomainsAspect extends AbstractItemAspect {
 
 	private static Pattern splitRegex = Pattern.compile("@",Pattern.CASE_INSENSITIVE);

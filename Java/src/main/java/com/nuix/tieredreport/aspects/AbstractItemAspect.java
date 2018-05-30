@@ -15,6 +15,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Abstract based class for all item aspects.
+ * @author Jason Wells
+ *
+ */
 public abstract class AbstractItemAspect implements ItemAspect {
 
 	public abstract String getAspectName();

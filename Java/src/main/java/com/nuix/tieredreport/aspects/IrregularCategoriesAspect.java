@@ -17,6 +17,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on irregular items categories they belong to.  
+ * @author Jason Wells
+ *
+ */
 public class IrregularCategoriesAspect extends AbstractItemAspect {
 	private static Map<String,String> irregularCategories = new HashMap<String,String>();
 	

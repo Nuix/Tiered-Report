@@ -15,6 +15,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on whether they are matches to a list of terms.
+ * @author Jason Wells
+ *
+ */
 public class TermsAspect extends AbstractItemAspect {
 
 	private static List<String> terms = new ArrayList<String>();

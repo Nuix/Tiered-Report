@@ -11,6 +11,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based upon the localized name (user friendly name) of the type attributed to the item by Nuix. 
+ * @author Jason Wells
+ *
+ */
 public class ItemTypeAspect extends AbstractItemAspect {
 
 	@Override

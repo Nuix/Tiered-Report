@@ -15,6 +15,12 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the item category assigned by Nuix as returned by
+ * <a href="https://download.nuix.com/releases/desktop/stable/docs/en/scripting/api/nuix/Item.html#getItemCategory--">Item.getItemCategory</a>.
+ * @author Jason Wells
+ *
+ */
 public class ItemCategoryAspect extends AbstractItemAspect {
 	
 	private static Map<String,Integer> valueRanking = new HashMap<String,Integer>();

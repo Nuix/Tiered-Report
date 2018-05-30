@@ -16,6 +16,12 @@ import nuix.Item;
 import nuix.ItemSet;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the item set to which they belong and whether they are original or duplicate
+ * within that item set.
+ * @author Jason Wells
+ *
+ */
 public class ItemSetNameAndDuplicatStatus extends AbstractItemAspect {
 
 	private List<String> nameOrder = null;

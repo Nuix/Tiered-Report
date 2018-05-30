@@ -13,6 +13,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Foundation interface of all item aspects.
+ * @author Jason Wells
+ *
+ */
 public interface ItemAspect {
 	public String getAspectName();
 	public String getAspectReportLabel();

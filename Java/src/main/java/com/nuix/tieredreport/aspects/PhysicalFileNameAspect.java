@@ -12,6 +12,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which catgorizes items based on the name of the physical file (flag:physical_file) ancestor of the item.
+ * @author Jason Wells
+ *
+ */
 public class PhysicalFileNameAspect extends AbstractItemAspect {
 
 	@Override

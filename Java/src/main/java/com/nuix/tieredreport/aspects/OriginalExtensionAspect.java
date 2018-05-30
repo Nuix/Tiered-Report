@@ -11,6 +11,12 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the original extension as obtained by calling
+ * <a href="https://download.nuix.com/releases/desktop/stable/docs/en/scripting/api/nuix/Item.html#getOriginalExtension--">Item.getOriginalExtension</a>
+ * @author Jason Wells
+ *
+ */
 public class OriginalExtensionAspect extends AbstractItemAspect {
 
 	@Override

@@ -11,6 +11,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based upon the exclusion they belong to.
+ * @author Jason Wells
+ *
+ */
 public class ExclusionNameAspect extends AbstractItemAspect {
 
 	@Override

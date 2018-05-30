@@ -11,6 +11,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items by the name of the case to which they belong.
+ * @author Jason Wells
+ *
+ */
 public class CaseNameAspect extends AbstractItemAspect {
 
 	@Override

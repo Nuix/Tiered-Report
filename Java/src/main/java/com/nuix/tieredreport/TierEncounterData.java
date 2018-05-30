@@ -2,6 +2,11 @@ package com.nuix.tieredreport;
 
 import java.util.List;
 
+/***
+ * Used to track summary data while report is being generated.
+ * @author Jason Wells
+ *
+ */
 public class TierEncounterData {
 	public List<String> aspectNames;
 	public List<Object> values;

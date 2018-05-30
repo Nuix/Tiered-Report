@@ -11,6 +11,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on their material status (audited / non-audited).
+ * @author Jason Wells
+ *
+ */
 public class MaterialStatusAspect extends AbstractItemAspect {
 
 	@Override

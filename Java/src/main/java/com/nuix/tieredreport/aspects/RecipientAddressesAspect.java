@@ -15,6 +15,11 @@ import nuix.Communication;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the recipient addresses associated with those items.
+ * @author Jason Wells
+ *
+ */
 public class RecipientAddressesAspect extends AbstractItemAspect {
 
 	@Override

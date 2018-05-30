@@ -11,6 +11,12 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the corrected extension associated to them, obtained by
+ * calling <a href="https://download.nuix.com/releases/desktop/stable/docs/en/scripting/api/nuix/Item.html#getCorrectedExtension--">Item.getCorrectedExtension</a>.
+ * @author Jason Wells
+ *
+ */
 public class CorrectedExtensionAspect extends AbstractItemAspect {
 
 	@Override

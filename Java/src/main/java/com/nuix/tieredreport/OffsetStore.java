@@ -3,6 +3,12 @@ package com.nuix.tieredreport;
 import java.util.HashMap;
 import java.util.Map;
 
+/***
+ * Represents association between an item info and its offset within Roaring Bitmaps it
+ * may belong to.
+ * @author Jason Wells
+ *
+ */
 public class OffsetStore {
 	private Map<ItemInfo, Integer> offsetLookup = new HashMap<ItemInfo, Integer>();
 	private Map<Integer, ItemInfo> itemInfoLookup = new HashMap<Integer, ItemInfo>();

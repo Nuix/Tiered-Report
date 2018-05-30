@@ -13,6 +13,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on their full item date.
+ * @author Jason Wells
+ *
+ */
 public class ItemDateFullAspect extends AbstractItemAspect {
 
 	private static String formatString = "yyyy/MM/dd";

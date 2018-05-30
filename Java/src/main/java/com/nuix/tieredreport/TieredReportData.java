@@ -26,6 +26,12 @@ import nuix.Item;
 import nuix.ItemUtility;
 import nuix.Utilities;
 
+/***
+ * This class represents and collect data about items used to later generate the actual
+ * workbook report.
+ * @author Jason Wells
+ *
+ */
 public class TieredReportData {
 	private Map<ByteBuffer,ItemInfo> itemInfoByGuid = new HashMap<ByteBuffer,ItemInfo>();
 	private Map<String,Map<Object,RoaringBitmap>> bitmaps = new HashMap<String,Map<Object,RoaringBitmap>>();

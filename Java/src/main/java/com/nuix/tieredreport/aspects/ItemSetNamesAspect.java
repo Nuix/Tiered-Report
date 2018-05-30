@@ -13,6 +13,11 @@ import nuix.Item;
 import nuix.ItemSet;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the name of the item sets to which they are a member of.
+ * @author Jason Wells
+ *
+ */
 public class ItemSetNamesAspect extends AbstractItemAspect {
 
 	@Override

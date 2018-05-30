@@ -12,6 +12,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items by their batch load date.
+ * @author Jason Wells
+ *
+ */
 public class BatchLoadDateAspect extends AbstractItemAspect {
 
 	@Override

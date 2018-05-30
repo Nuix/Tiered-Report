@@ -11,6 +11,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based upon the name of the evidence container item they belong to.
+ * @author Jason Wells
+ *
+ */
 public class EvidenceNameAspect extends AbstractItemAspect {
 	@Override
 	public String getAspectName() {

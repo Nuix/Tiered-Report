@@ -15,6 +15,12 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based upon whether they are present in any item set as either
+ * an orginal or duplicate.
+ * @author Jason Wells
+ *
+ */
 public class GlobalItemSetDuplicateStatusAspect extends AbstractItemAspect {
 
 	@Override

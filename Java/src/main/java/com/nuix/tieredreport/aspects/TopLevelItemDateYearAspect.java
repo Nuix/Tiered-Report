@@ -13,6 +13,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the year of their top level item's item date. 
+ * @author Jason Wells
+ *
+ */
 public class TopLevelItemDateYearAspect extends AbstractItemAspect {
 
 	private DateTimeZone investigationZone;

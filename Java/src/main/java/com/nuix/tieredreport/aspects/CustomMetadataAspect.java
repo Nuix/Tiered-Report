@@ -11,6 +11,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the value present in a particular custom metadata field on the item.
+ * @author Jason Wells
+ *
+ */
 public class CustomMetadataAspect extends AbstractItemAspect {
 	
 	private String customMetadataFieldName = null;

@@ -13,6 +13,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the named entities found by Nuix during processing.
+ * @author Jason Wells
+ *
+ */
 public class NamedEntityAspect extends AbstractItemAspect {
 
 	@Override

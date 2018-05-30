@@ -11,6 +11,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the value found in a particular metadata property.
+ * @author Jason Wells
+ *
+ */
 public class PropertyMetadataAspect extends AbstractItemAspect {
 
 	private String propertyName = null;

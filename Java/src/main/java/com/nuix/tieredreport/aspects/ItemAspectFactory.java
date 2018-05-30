@@ -3,6 +3,12 @@ package com.nuix.tieredreport.aspects;
 import java.util.ArrayList;
 import java.util.List;
 
+/***
+ * Class which can provide one of every available item apsect.  Used to populate list of item
+ * aspects in settings dialog for user to pick from.
+ * @author Jason Wells
+ *
+ */
 public class ItemAspectFactory {
 	private static List<ItemAspect> aspects = null;
 	

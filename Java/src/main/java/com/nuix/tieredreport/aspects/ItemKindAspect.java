@@ -11,6 +11,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on their kind.
+ * @author Jason Wells
+ *
+ */
 public class ItemKindAspect extends AbstractItemAspect {
 
 	@Override

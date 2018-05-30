@@ -11,6 +11,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the item type of their top level item. 
+ * @author Jason Wells
+ *
+ */
 public class TopLevelItemTypeAspect extends AbstractItemAspect {
 
 	@Override

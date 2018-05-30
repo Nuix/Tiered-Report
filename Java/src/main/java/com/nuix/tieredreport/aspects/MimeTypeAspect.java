@@ -11,6 +11,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the mime type detected by Nuix.
+ * @author Jason Wells
+ *
+ */
 public class MimeTypeAspect extends AbstractItemAspect {
 
 	@Override

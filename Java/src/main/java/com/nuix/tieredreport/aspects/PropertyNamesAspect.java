@@ -12,6 +12,11 @@ import nuix.Case;
 import nuix.Item;
 import nuix.Utilities;
 
+/***
+ * Item aspect which categorizes items based on the names of the meta data properties on those items.
+ * @author Jason Wells
+ *
+ */
 public class PropertyNamesAspect extends AbstractItemAspect {
 
 	@Override
