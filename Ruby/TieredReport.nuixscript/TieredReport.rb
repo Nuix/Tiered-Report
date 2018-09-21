@@ -7,7 +7,6 @@ require File.join(script_directory,"Nx.jar")
 java_import "com.nuix.nx.NuixConnection"
 java_import "com.nuix.nx.LookAndFeelHelper"
 java_import "com.nuix.nx.dialogs.ChoiceDialog"
-java_import "com.nuix.nx.dialogs.CustomDialog"
 java_import "com.nuix.nx.dialogs.TabbedCustomDialog"
 java_import "com.nuix.nx.dialogs.CommonDialogs"
 java_import "com.nuix.nx.dialogs.ProgressDialog"
@@ -73,6 +72,8 @@ month_end = DateTime.new.dayOfMonth.withMaximumValue
 # Main Tab
 main_tab = dialog.addTab("main_tab",build_hacky_label("Main",false))
 main_tab.appendSaveFileChooser("report_file","Report XLSX File","Excel 2007 Workbook","xlsx")
+# We don't want the report file name to be saved to prevent saving overwriting previous reports
+main_tab.doNotSerialize("report_file")
 if !$current_case.nil?
 	file_timestamp = Time.now.strftime("%Y%m%d_%H%M%S")
 	report_path = File.join($current_case.getLocation.getPath,"Reports","TieredReport_#{file_timestamp}.xlsx")

@@ -46,6 +46,15 @@ public abstract class AbstractItemAspect implements ItemAspect {
 	}
 
 	@Override
+	public void postProcess(Map<Object, RoaringBitmap> aspectBitmaps, TieredReportData data) {
+	}
+
+	@Override
+	public boolean reportsZeroItems() {
+		return false;
+	}
+
+	@Override
 	public void cleanup() {
 	}
 

@@ -39,10 +39,12 @@ public class ItemAspectFactory {
 			aspects.add(new ItemDateYearAspect());
 			aspects.add(new ItemDateMonthAspect());
 			aspects.add(new ItemDateYearMonthAspect());
+			aspects.add(new ItemDateYearMonthWithZerosAspect());
 			aspects.add(new ItemDateFullAspect());
 			aspects.add(new TopLevelItemDateYearAspect());
 			aspects.add(new TopLevelItemDateMonthAspect());
 			aspects.add(new TopLevelItemDateYearMonthAspect());
+			aspects.add(new TopLevelItemDateYearMonthWithZerosAspect());
 			aspects.add(new TopLevelItemDateFullAspect());
 			aspects.add(new ItemSetNamesAspect());
 			aspects.add(new ItemSetNameAndDuplicatStatus());

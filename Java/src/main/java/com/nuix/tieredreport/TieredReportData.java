@@ -187,6 +187,10 @@ public class TieredReportData {
 		recordItemInfoValue(aspectBitmaps,value,getItemInfo(item));
 	}
 	
+	public void recordValueWithoutItems(Map<Object,RoaringBitmap> aspectBitmaps, Object value){
+		aspectBitmaps.computeIfAbsent(value,aspectComputeIfAbsent);
+	}
+	
 	public void recordItemInfosValue(Map<Object,RoaringBitmap> aspectBitmaps, Object value, Collection<ItemInfo> infos){
 		aspectBitmaps.putIfAbsent(value,new RoaringBitmap());
 		RoaringBitmap bitmap = aspectBitmaps.get(value);
@@ -287,10 +291,14 @@ public class TieredReportData {
 		}
 		
 		for(ItemAspect aspect : aspects){
+			fireProgressMessage("Post processing '"+aspect.getAspectName()+"'...");
+			aspect.postProcess(bitmaps.get(aspect.getAspectName()), this);
+			
 			fireProgressMessage("Optimizing '"+aspect.getAspectName()+"' bitmaps...");
 			for(RoaringBitmap bitmap : bitmaps.get(aspect.getAspectName()).values()){
 				bitmap.runOptimize();
 			}
+			
 			aspect.cleanup();
 			if(abortWasRequested){ return; }
 		}
@@ -357,7 +365,7 @@ public class TieredReportData {
 				List<Object> values = new ArrayList<Object>(valueStack);
 				RoaringBitmap aspectValueBitmap = getBitmap(currentAspect.getAspectName(),value);
 				List<ItemInfo> infos = getInfos(RoaringBitmap.and(previousTiers,aspectValueBitmap));
-				if(infos.size() > 0){
+				if(infos.size() > 0 || currentAspect.reportsZeroItems()){
 					TierEncounterData tierData = new TierEncounterData();
 					if(collectAuditedCount){
 						tierData.totalAuditedCount = infos.stream().filter(i -> i.isAudited).count();
@@ -403,7 +411,7 @@ public class TieredReportData {
 				List<Object> values = new ArrayList<Object>(valueStack);
 				RoaringBitmap aspectValueBitmap = getBitmap(currentAspect.getAspectName(),value);
 				List<ItemInfo> infos = getInfos(RoaringBitmap.and(previousTiers,aspectValueBitmap));
-				if(infos.size() > 0){
+				if(infos.size() > 0  || currentAspect.reportsZeroItems()){
 					TierEncounterData tierData = new TierEncounterData();
 					if(collectAuditedCount){
 						tierData.totalAuditedCount = infos.stream().filter(i -> i.isAudited).count();
