@@ -22,6 +22,7 @@ public class OffsetStore {
 		itemInfoLookup.clear();
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	public int getOffset(ItemInfo itemInfo){
 		if(!itemInfoLookup.containsKey(itemInfo)){
 			int preAddSize = itemInfoLookup.size();
