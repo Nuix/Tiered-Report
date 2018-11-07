@@ -11,7 +11,6 @@ java_import "com.nuix.nx.dialogs.TabbedCustomDialog"
 java_import "com.nuix.nx.dialogs.CommonDialogs"
 java_import "com.nuix.nx.dialogs.ProgressDialog"
 java_import "com.nuix.nx.controls.models.Choice"
-require File.join(script_directory,"RoaringBitmap-0.6.46.jar")
 require File.join(script_directory,"TieredReport.jar")
 java_import "com.nuix.tieredreport.TieredReportData"
 java_import "com.nuix.tieredreport.ReportSheetInfo"
