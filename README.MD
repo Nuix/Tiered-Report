@@ -5,7 +5,7 @@ Tiered Report
 
 ![image](https://user-images.githubusercontent.com/11775738/40689930-5bd97ff4-6359-11e8-88f4-feb7af4553fe.png)
 
-![Last tested in Nuix 7.4](https://img.shields.io/badge/Nuix-7.4-green.svg)
+![Last tested in Nuix 7.6](https://img.shields.io/badge/Nuix-7.6-green.svg)
 
 View the GitHub project [here](https://github.com/Nuix/Tiered-Report) or download the latest release [here](https://github.com/Nuix/Tiered-Report/releases).
 
@@ -32,13 +32,13 @@ I would get a report sheet which is first broken down by Evidence Name and then 
 
 For each tier the total number of items is reported as well as optionally things like total audited size and total file size.
 
-# Forking this Repository
+## Cloning this Repository
 
-It is important to note that this script makes use of [RoaringBitmaps](https://github.com/RoaringBitmap/RoaringBitmap) (not included in this repository).  If you wish to fork the repository and work on it yourself, you will need to make sure you obtain a copy of that JAR and that this line in [TieredReport.rb](https://github.com/Nuix/Tiered-Report/blob/master/Ruby/TieredReport.nuixscript/TieredReport.rb) points to the correct JAR filename that you include with the script:
+This script relies on code from [Nx](https://github.com/Nuix/Nx) to present a settings dialog and progress dialog.  This JAR file is not included in the repository (although it is included in release downloads).  If you clone this repository, you will also want to obtain a copy of Nx.jar by either:
+1. Building it from [the source](https://github.com/Nuix/Nx)
+2. Downloading an already built JAR file from the [Nx releases](https://github.com/Nuix/Nx/releases)
 
-```ruby
-require File.join(script_directory,"RoaringBitmap-0.6.46.jar")
-```
+Once you have a copy of Nx.jar, make sure to include it in the same directory as the script.
 
 # Getting Started
 
