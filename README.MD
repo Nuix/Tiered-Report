@@ -5,7 +5,7 @@ Tiered Report
 
 ![image](https://user-images.githubusercontent.com/11775738/40689930-5bd97ff4-6359-11e8-88f4-feb7af4553fe.png)
 
-![This script was last tested in Nuix 7.6](https://img.shields.io/badge/Script%20Tested%20in%20Nuix-7.6-green.svg)
+![This script was last tested in Nuix 7.8](https://img.shields.io/badge/Script%20Tested%20in%20Nuix-7.8-green.svg)
 
 View the GitHub project [here](https://github.com/Nuix/Tiered-Report) or download the latest release [here](https://github.com/Nuix/Tiered-Report/releases).
 
