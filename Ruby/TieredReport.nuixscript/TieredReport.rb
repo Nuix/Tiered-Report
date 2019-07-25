@@ -64,6 +64,7 @@ report_sheets = 15
 
 dialog = TabbedCustomDialog.new("Tiered Report")
 dialog.setTabPlacementLeft
+dialog.setHelpUrl("https://github.com/Nuix/Tiered-Report")
 
 month_start = DateTime.new.dayOfMonth.withMinimumValue
 month_end = DateTime.new.dayOfMonth.withMaximumValue

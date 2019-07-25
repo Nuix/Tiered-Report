@@ -5,7 +5,7 @@ Tiered Report
 
 ![image](https://user-images.githubusercontent.com/11775738/40689930-5bd97ff4-6359-11e8-88f4-feb7af4553fe.png)
 
-![This script was last tested in Nuix 7.8](https://img.shields.io/badge/Script%20Tested%20in%20Nuix-7.8-green.svg)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0) ![This script was last tested in Nuix 8.0](https://img.shields.io/badge/Script%20Tested%20in%20Nuix-8.0-green.svg)
 
 View the GitHub project [here](https://github.com/Nuix/Tiered-Report) or download the latest release [here](https://github.com/Nuix/Tiered-Report/releases).
 
@@ -87,6 +87,9 @@ These are aspects of items which you would like reported.  Each selected aspect 
 | Recipient Addresses | Categorizes items based on the email addresses present in the communication fields `To`, `CC` and `BCC`. If the item does not have a communication (item which does not have recipient fields) then it will be categorized as `Non Communication`. |
 | Sender Addresses | Categorizes items based on the email addresses present in the communication field `From`. If the item does not have a communication then it will be categorized as `Non Communication`. |
 | Sender Domains | Categorizes items based on the email address domains present in the field `From`. If a domain is unable to be parsed from an address it will be recorded as `No Domain`. If the item does not have a communication (item which does not have recipient fields) then it will be categorized as `Non Communication`. |
+| To Domains | Categorizes items based on the email address domains present in the communication field `To`. If a domain is unable to be parsed from an address it will be recorded as `No Domain`. If the item does not have a communication object then it will be categorized as `Non Communication`. |
+| CC Domains | Categorizes items based on the email address domains present in the communication field `CC`. If a domain is unable to be parsed from an address it will be recorded as `No Domain`. If the item does not have a communication object then it will be categorized as `Non Communication`. |
+| BCC Domains | Categorizes items based on the email address domains present in the communication field `BCC`. If a domain is unable to be parsed from an address it will be recorded as `No Domain`. If the item does not have a communication object then it will be categorized as `Non Communication`. |
 | Tags | Categorizes items based on the tags applied to each item. Items which have no tags applied will be categorized as `No Tags` |
 | Physical File Name | Categorizes items based name of the ancestor item which is responds to the query `flag:physical_file`. This could be used in some instances to categorize items based on things like the name of the originating PST they came from. If a physical file ancestor is unable to be resolved for an item, it will be categorized as `No Physical File Ancestor`.  **Important Note:** This aspect performs heavy traversal over the item structure and may degrade reporting performance. This aspect also has potential to generate very large reports depending on the source data. Use with care! |
 | Named Entity | Categorizes items based on the named entity types located in an item during ingestion. |
@@ -102,7 +105,7 @@ These are aspects of items which you would like reported.  Each selected aspect 
 # License
 
 ```
-Copyright 2018 Nuix
+Copyright 2019 Nuix
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

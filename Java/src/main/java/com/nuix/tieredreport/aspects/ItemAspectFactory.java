@@ -58,6 +58,9 @@ public class ItemAspectFactory {
 			aspects.add(new RecipientDomainsAspect());
 			aspects.add(new SenderAddressesAspect());
 			aspects.add(new SenderDomainsAspect());
+			aspects.add(new ToDomainsAspect());
+			aspects.add(new CcDomainsAspect());
+			aspects.add(new BccDomainsAspect());
 			aspects.add(new TagNamesAspect());
 			aspects.add(new TermsAspect());
 		}
