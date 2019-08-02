@@ -55,6 +55,9 @@ public class ItemAspectFactory {
 			aspects.add(new PhysicalFileNameAspect());
 			aspects.add(new PropertyNamesAspect());
 			aspects.add(new RecipientAddressesAspect());
+			aspects.add(new ToAddressesAspect());
+			aspects.add(new CcAddressesAspect());
+			aspects.add(new BccAddressesAspect());
 			aspects.add(new RecipientDomainsAspect());
 			aspects.add(new SenderAddressesAspect());
 			aspects.add(new SenderDomainsAspect());
