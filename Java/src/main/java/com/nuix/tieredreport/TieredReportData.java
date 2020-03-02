@@ -135,42 +135,52 @@ public class TieredReportData {
 		}
 		return result;
 	}
-	
-	//http://stackoverflow.com/questions/2270910/how-to-convert-sequence-of-numbers-in-an-array-to-range-of-numbers
-	public static ArrayList<int[]> getRanges(int[] indicies)
-    {
-        ArrayList<int[]> ranges = new ArrayList<int[]>();
-        int rstart, rend;   
-        int lastnum = indicies[indicies.length-1];
-        for (int i = 0; i < indicies.length-1; i++) 
-        {     
-            rstart = indicies[i];
-            rend = rstart;     
-            while (indicies[i + 1] - indicies[i] == 1) 
-            {       
-                rend = indicies[i + 1];
-                // increment the index if the numbers sequential       
-                if(rend>=lastnum)
-                {
-                    break;
-                }
-                else
-                {
-                    i++;
-                }  
-            }  
-            if(rstart==rend)
-            {
-                ranges.add(new int[]{rend});
-            }
-            else
-            {
-            	ranges.add(new int[]{rstart,rend});
-            }
-        } 
-        return ranges; 
+
+	/**
+	 * converts an array of sorted integers into an array of distinct ranges using the following logic:
+	 * - when the difference between two consecutive values is > 1, create a new range
+	 * - if the range contains a single value, return that value
+	 * - otherwise create a range [begOfRange, endOfRange] (inclusive)
+	 * 
+	 * Example:
+	 * 	[0, 2, 4, 5, 6, 8] -> [[0], [2], [4,6], [8]]
+	 * 
+	 * @param sortedIntArray an array of sorted integers (ascending)
+	 * @return the distinct ranges
+	 */
+	public static ArrayList<int[]> getRanges(int[] sortedIntArray) {
+    ArrayList<int[]> ranges = new ArrayList<int[]>();
+    int begOfRange = sortedIntArray[0];
+    int endOfRange = begOfRange;
+    for (int k = 0; k < sortedIntArray.length; k += 1) {
+      int compareValue = sortedIntArray[k];
+      int difference = compareValue - endOfRange;
+      if (difference == 1) { // extend end of range
+        endOfRange = compareValue;
+      } else if (difference > 1) { // create range
+        if (begOfRange == endOfRange) { // single value
+          int[] range = new int[]{ begOfRange };
+          ranges.add(range);
+        } else { // else [begin, end) range
+          int[] range = new int[]{ begOfRange, endOfRange };
+          ranges.add(range);
+        }
+        // start next range
+        begOfRange = sortedIntArray[k];
+        endOfRange = begOfRange;
+      }
     }
-	
+  	// create remaining range
+    if (begOfRange == endOfRange) { // single value
+      int[] range = new int[]{ begOfRange };
+      ranges.add(range);
+    } else { // else [begin, end) range
+      int[] range = new int[]{ begOfRange, endOfRange };
+      ranges.add(range);
+    }
+  	return ranges;
+  }
+
 	private Function<Object, RoaringBitmap> aspectComputeIfAbsent = new Function<Object, RoaringBitmap>() {
 		@Override
 		public RoaringBitmap apply(Object t) {
