@@ -320,7 +320,8 @@ public class TieredReportData {
 			if(sheetInfo.getSubScopeQuery() != null && sheetInfo.getSubScopeQuery().trim().isEmpty() != true){
 				// Get items responsive to sub scope query for this sheet
 				fireProgressMessage("  Sheet Sub Scope Query: "+sheetInfo.getSubScopeQuery());
-				Set<Item> subScopeItems = nuixCase.searchUnsorted(sheetInfo.getSubScopeQuery());
+				// Run scope search, using default fields user specified
+				Set<Item> subScopeItems = nuixCase.searchUnsorted(sheetInfo.getSubScopeQuery(),sheetInfo.getSubScopeSearchSettings());
 				fireProgressMessage("  Sheet Sub Scope Items: "+sheetInfo.getSubScopeQuery());
 				// Intersect these items with the overall scope queries items from this case
 				Set<Item> intersected = iutil.intersection(subScopeItems, items);

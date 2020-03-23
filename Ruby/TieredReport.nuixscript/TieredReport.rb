@@ -156,8 +156,19 @@ report_sheets.times do |sheet_index|
 
 	report_tab.appendComboBox("size_unit_#{sheet_index}","Data Size Unit",size_unit_choices)
 
+	# Choices presented to user for sub scope query default fields
+	field_choices = [
+		"content", "properties", "name", "path-name", "evidence-metadata", "from", "to", "cc", "bcc"
+	]
+
+	# Field choices selected by default
+	selected_field_choices = [
+		"content", "properties", "name"
+	]
+
 	report_tab.appendHeader("Sub Scope Query")
 	report_tab.appendTextArea("sub_scope_query_#{sheet_index}","","")
+	report_tab.appendMultipleChoiceComboBox("sub_scope_default_fields_#{sheet_index}","Sub Scope Default Fields",field_choices,selected_field_choices)
 	
 	report_tab.appendHeader("Reported Item Aspects")
 	report_tab.appendChoiceTable("sheet_aspects_#{sheet_index}","Tiers",generate_aspect_choices(item_aspects))
@@ -177,16 +188,34 @@ report_sheets.times do |sheet_index|
 	report_tab.enabledOnlyWhenChecked("use_sparse_columns_#{sheet_index}","generate_sheet_#{sheet_index}")
 end
 
+#==========
 # Terms Tab
+#==========
+
+# Choices presented to user for sub scope query default fields
+field_choices = [
+	"content", "properties", "name", "path-name", "evidence-metadata", "from", "to", "cc", "bcc"
+]
+
+# Field choices selected by default
+selected_field_choices = [
+	"content", "properties", "name"
+]
+
 terms_tab = dialog.addTab("terms_tab",build_hacky_label("Terms",false))
 terms_tab.appendHeader("Determine what terms will be used with terms aspect")
 terms_tab.appendStringList("terms")
+terms_tab.appendMultipleChoiceComboBox("terms_default_fields","Terms Default Fields",field_choices,selected_field_choices)
 
 dialog.whenJsonFileLoaded do
 	if $current_case.nil?
 		case_paths_tab.getControl("use_case_paths").setSelected(true)
 	end
 end
+
+#====================
+# Validate user input
+#====================
 
 dialog.validateBeforeClosing do |values|
 	# Validate report file
@@ -226,6 +255,14 @@ dialog.validateBeforeClosing do |values|
 				all_sheets_valid = false
 				break
 			end
+			# Make sure that if we have a scope query for this sheet, that at least 1 default field is selected
+			sub_scope_query = values["sub_scope_query_#{sheet_index}"]
+			sub_scope_default_fields = values["sub_scope_default_fields_#{sheet_index}"]
+			if sub_scope_query.strip.empty? == false && sub_scope_default_fields.size < 1
+				sheet_error_message = "Sheet #{sheet_index}: Must select at least 1 default field when providing a Sub Scope Query for a sheet."
+				all_sheets_valid = false
+				break
+			end
 		end
 	end
 	if !all_sheets_valid
@@ -234,6 +271,15 @@ dialog.validateBeforeClosing do |values|
 	end
 	if sheets_to_generate < 1
 		CommonDialogs.showWarning("You have not checked 'Generate Sheet' in any tab.")
+		next false
+	end
+
+	# Make sure that if user has provided terms then they specify at least 1
+	# default search field on the terms tab
+	terms = values["terms"]
+	terms_default_fields = values["terms_default_fields"]
+	if terms.size > 0 && terms_default_fields.size < 1
+		CommonDialogs.showWarning("When providing terms on the Terms tab, at least one default search field must be specified.")
 		next false
 	end
 
@@ -268,6 +314,7 @@ if dialog.getDialogResult == true
 		.withMinuteOfHour(59)
 
 	TermsAspect.setTerms(values["terms"])
+	TermsAspect.setDefaultFields(values["terms_default_fields"])
 	
 	collect_audited_count = false
 	collect_audited_sizes = false
@@ -352,6 +399,7 @@ if dialog.getDialogResult == true
 				report_sheet_info.setIncludeCategoryHeaderRows(values["include_category_headers_#{sheet_index}"])
 				report_sheet_info.setUseSparseColumns(values["use_sparse_columns_#{sheet_index}"])
 				report_sheet_info.setSubScopeQuery(values["sub_scope_query_#{sheet_index}"])
+				report_sheet_info.setSubScopeDefaultFields(values["sub_scope_default_fields_#{sheet_index}"])
 				sheet_size_unit = values["size_unit_#{sheet_index}"]
 				case sheet_size_unit
 				when "Bytes"
