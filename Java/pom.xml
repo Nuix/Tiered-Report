@@ -3,7 +3,7 @@
 
   <groupId>com.nuix.TieredReport</groupId>
   <artifactId>TieredReport</artifactId>
-  <version>1.23.0</version>
+  <version>1.24.0</version>
 
   <properties>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -17,6 +17,12 @@
       <version>0.6.44</version>
     </dependency>
     <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- <dependency>
       <groupId>com.nuix</groupId>
       <artifactId>nuix-scripting-api</artifactId>
       <version>7.8.7.573</version>
@@ -31,11 +37,6 @@
       <artifactId>aspose-cells</artifactId>
       <version>18.3.0</version>
     </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
+     -->
   </dependencies>
 </project>

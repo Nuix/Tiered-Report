@@ -1,6 +1,9 @@
 package com.nuix.tieredreport;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.roaringbitmap.RoaringBitmap;
 
@@ -41,6 +44,23 @@ public class ReportSheetInfo {
 		this.subScopeQuery = subScopeQuery;
 	}
 	
+	private List<String> subScopeDefaultFields = new ArrayList<String>();
+	private Map<String,Object> subScopeSearchSettings = new HashMap<String,Object>();
+	
+	public List<String> getSubScopeDefaultFields() {
+		return subScopeDefaultFields;
+	}
+
+	public void setSubScopeDefaultFields(List<String> subScopeDefaultFields) {
+		this.subScopeDefaultFields = subScopeDefaultFields;
+		subScopeSearchSettings.clear();
+		subScopeSearchSettings.put("defaultFields", subScopeDefaultFields);
+	}
+	
+	public Map<String,Object> getSubScopeSearchSettings(){
+		return subScopeSearchSettings;
+	}
+
 	public boolean getIncludeCategoryHeaderRows(){ return includeCategoryHeaderRows; }
 	public void setIncludeCategoryHeaderRows(boolean value){ includeCategoryHeaderRows = value; }
 	
