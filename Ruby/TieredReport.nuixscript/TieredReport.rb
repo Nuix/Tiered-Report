@@ -122,6 +122,7 @@ end
 
 size_unit_choices = [
 	"Giga Bytes",
+	"Mega Bytes",
 	"Bytes",
 	"Dynamic",
 ]
@@ -406,6 +407,8 @@ if dialog.getDialogResult == true
 					report_sheet_info.setSizeUnit(FileSizeUnit::BYTES)
 				when "Dynamic"
 					report_sheet_info.setSizeUnit(FileSizeUnit::DYNAMIC)
+				when "Mega Bytes"
+					report_sheet_info.setSizeUnit(FileSizeUnit::MEGABYTES)
 				else
 					report_sheet_info.setSizeUnit(FileSizeUnit::GIGABYTES)
 				end

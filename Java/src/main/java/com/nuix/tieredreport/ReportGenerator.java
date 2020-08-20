@@ -2,10 +2,11 @@ package com.nuix.tieredreport;
 
 import java.io.File;
 import java.lang.reflect.Method;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.apache.commons.math3.util.Precision;
 
 import com.aspose.cells.BackgroundType;
 import com.aspose.cells.Cell;
@@ -106,6 +107,9 @@ public class ReportGenerator {
 					case DYNAMIC:
 						headers.add("Total Audited Size");
 						break;
+					case MEGABYTES:
+						headers.add("Total Audited Size MB");
+						break;
 					default:
 						headers.add("Total Audited Size GB");
 						break;
@@ -121,6 +125,9 @@ public class ReportGenerator {
 					case DYNAMIC:
 						headers.add("Total File Size");
 						break;
+					case MEGABYTES:
+						headers.add("Total File Size MB");
+						break;
 					default:
 						headers.add("Total File Size GB");
 						break;
@@ -135,6 +142,9 @@ public class ReportGenerator {
 						break;
 					case DYNAMIC:
 						headers.add("Total Digest Input Size");
+						break;
+					case MEGABYTES:
+						headers.add("Total Digest Input Size MB");
 						break;
 					default:
 						headers.add("Total Digest Input Size GB");
@@ -223,6 +233,9 @@ public class ReportGenerator {
 							case DYNAMIC:
 								rowValues.add(bytesToDynamicSize(tierData.totalAuditedSize,2));
 								break;
+							case MEGABYTES:
+								rowValues.add(bytesToMb(tierData.totalAuditedSize,2));
+								break;
 							default:
 								rowValues.add(bytesToGb(tierData.totalAuditedSize,2));
 								break;
@@ -236,6 +249,9 @@ public class ReportGenerator {
 							case DYNAMIC:
 								rowValues.add(bytesToDynamicSize(tierData.totalFileSize,2));
 								break;
+							case MEGABYTES:
+								rowValues.add(bytesToMb(tierData.totalFileSize,2));
+								break;
 							default:
 								rowValues.add(bytesToGb(tierData.totalFileSize,2));
 								break;
@@ -248,6 +264,9 @@ public class ReportGenerator {
 								break;
 							case DYNAMIC:
 								rowValues.add(bytesToDynamicSize(tierData.totalDigestInputSize,2));
+								break;
+							case MEGABYTES:
+								rowValues.add(bytesToMb(tierData.totalDigestInputSize,2));
 								break;
 							default:
 								rowValues.add(bytesToGb(tierData.totalDigestInputSize,2));
@@ -271,15 +290,15 @@ public class ReportGenerator {
 			System.out.println("Applying '#,##0' format to cols "+minCol+"-"+maxCol);
 			applyFormat(sheet, "#,##0", 1, sheet.getCells().getRows().getCount(), minCol, maxCol);
 			
-			if(sheetInfo.getSizeUnit() == FileSizeUnit.GIGABYTES){
+			if(sheetInfo.getSizeUnit() == FileSizeUnit.GIGABYTES || sheetInfo.getSizeUnit() == FileSizeUnit.MEGABYTES){
 				minCol = aspects.size()+1+currentAdditionalItemCountColumns;
 				maxCol = aspects.size()+currentMetricColumns;
-				System.out.println("Applying '0.000' format to cols "+minCol+"-"+maxCol);
-				applyFormat(sheet, "0.000", 1, sheet.getCells().getRows().getCount(), minCol, maxCol);	
+				System.out.println("Applying '#,##0.000' format to cols "+minCol+"-"+maxCol);
+				applyFormat(sheet, "#,##0.000", 1, sheet.getCells().getRows().getCount(), minCol, maxCol);
 			} else if (sheetInfo.getSizeUnit() == FileSizeUnit.BYTES){
 				minCol = aspects.size()+1+currentAdditionalItemCountColumns;
 				maxCol = aspects.size()+currentMetricColumns;
-				System.out.println("Applying '0.000' format to cols "+minCol+"-"+maxCol);
+				System.out.println("Applying '#,##0' format to cols "+minCol+"-"+maxCol);
 				applyFormat(sheet, "#,##0", 1, sheet.getCells().getRows().getCount(), minCol, maxCol);
 			}
 			
@@ -302,6 +321,19 @@ public class ReportGenerator {
 		
 		gb = ((double)bytes) / gb_in_bytes;
 		return round(gb,decimalPlaces);
+	}
+	
+	public static double bytesToMb(long bytes,int decimalPlaces){
+		double mb = 0.0d;
+		double mb_in_bytes = 0.0d;
+		
+		if(useSIUnits)
+			mb_in_bytes = Math.pow(1000d,2d);
+		else
+			mb_in_bytes = Math.pow(1024d,2d);
+		
+		mb = ((double)bytes) / mb_in_bytes;
+		return round(mb,decimalPlaces);
 	}
 	
 	public static String bytesToDynamicSize(long bytes, int decimalPlaces){
@@ -335,10 +367,7 @@ public class ReportGenerator {
 	}
 	
 	public static double round(double value, int numberOfDigitsAfterDecimalPoint) {
-        BigDecimal bigDecimal = new BigDecimal(value);
-        bigDecimal = bigDecimal.setScale(numberOfDigitsAfterDecimalPoint,
-                BigDecimal.ROUND_HALF_UP);
-        return bigDecimal.doubleValue();
+		return Precision.round(value, numberOfDigitsAfterDecimalPoint);
     }
 	
 	private static void writeRow(Worksheet sheet, List<Object> values, int rowNumber){

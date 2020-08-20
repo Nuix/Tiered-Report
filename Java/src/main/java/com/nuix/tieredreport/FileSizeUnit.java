@@ -9,4 +9,5 @@ public enum FileSizeUnit {
 	GIGABYTES,
 	BYTES,
 	DYNAMIC,
+	MEGABYTES,
 }
