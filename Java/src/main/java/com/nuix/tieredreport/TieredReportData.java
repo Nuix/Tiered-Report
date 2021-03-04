@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -33,7 +34,7 @@ import nuix.Utilities;
  *
  */
 public class TieredReportData {
-	private Map<ByteBuffer,ItemInfo> itemInfoByGuid = new HashMap<ByteBuffer,ItemInfo>();
+	private ConcurrentHashMap<ByteBuffer,ItemInfo> itemInfoByGuid = new ConcurrentHashMap<ByteBuffer,ItemInfo>();
 	private Map<String,Map<Object,RoaringBitmap>> bitmaps = new HashMap<String,Map<Object,RoaringBitmap>>();
 	private List<ItemInfo> infoByOffset = new ArrayList<ItemInfo>();
 	
@@ -109,7 +110,6 @@ public class TieredReportData {
 				
 				infoByOffset.add(info);
 				info.offset = infoByOffset.size()-1;
-				itemInfoByGuid.put(guidBytes,info);
 				
 				return info;
 			}

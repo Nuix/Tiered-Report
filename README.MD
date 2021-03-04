@@ -5,7 +5,7 @@ Tiered Report
 
 ![image](https://user-images.githubusercontent.com/11775738/40689930-5bd97ff4-6359-11e8-88f4-feb7af4553fe.png)
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0) ![This script was last tested in Nuix 8.0](https://img.shields.io/badge/Script%20Tested%20in%20Nuix-8.0-green.svg)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0) ![This script was last tested in Nuix 9.0](https://img.shields.io/badge/Script%20Tested%20in%20Nuix-9.0-green.svg)
 
 View the GitHub project [here](https://github.com/Nuix/Tiered-Report) or download the latest release [here](https://github.com/Nuix/Tiered-Report/releases).
 
