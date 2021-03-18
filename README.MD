@@ -108,7 +108,7 @@ These are aspects of items which you would like reported.  Each selected aspect 
 # License
 
 ```
-Copyright 2019 Nuix
+Copyright 2021 Nuix
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

@@ -28,6 +28,14 @@ public class ReportGenerator {
 	private static int currentAdditionalItemCountColumns = 0;
 	private static boolean useSIUnits = true;
 	
+	private static int columnHeaderRed = 8;
+	private static int columnHeaderGreen = 73;
+	private static int columnHeaderBlue = 128;
+	
+	private static int categoryHeaderRed = 0;
+	private static int categoryHeaderGreen = 153;
+	private static int categoryHeaderBlue = 255;
+	
 	public static void generateReport(TieredReportData data, File destination, List<ReportSheetInfo> reportSheets, ReportGenerationProgressCallback callback) throws Exception{
 		// Try to figure the right package for this call since it changes
 		// with almost every major release <sigh>
@@ -60,7 +68,8 @@ public class ReportGenerator {
 		Style headersStyle = workbook.createStyle();
 		headersStyle.getFont().setSize(12);
 		headersStyle.getFont().setBold(true);
-		headersStyle.setForegroundColor(Color.fromArgb(8, 73, 128));
+		Color columnHeaderColor = Color.fromArgb(columnHeaderRed, columnHeaderGreen, columnHeaderBlue);
+		headersStyle.setForegroundColor(columnHeaderColor);
 		headersStyle.setPattern(BackgroundType.SOLID);
 		headersStyle.getFont().setColor(Color.getWhite());
 		
@@ -179,7 +188,8 @@ public class ReportGenerator {
 						categoryHeaderStyles = new Style[aspects.size()];
 						for(int i = 0; i < aspects.size();i++){
 							Style categoryHeaderStyle = workbook.createStyle();
-							categoryHeaderStyle.setForegroundColor(getTint(0,153,255,(float)i/2.0f));
+							Color fgColor = getTint(categoryHeaderRed,categoryHeaderGreen,categoryHeaderBlue,(float)i/2.0f);
+							categoryHeaderStyle.setForegroundColor(fgColor);
 							categoryHeaderStyle.setPattern(BackgroundType.SOLID);
 							categoryHeaderStyle.getFont().setBold(true);
 							categoryHeaderStyles[i] = categoryHeaderStyle;
@@ -424,5 +434,17 @@ public class ReportGenerator {
 
 	public static void setUseSIUnits(boolean useSIUnits) {
 		ReportGenerator.useSIUnits = useSIUnits;
+	}
+	
+	public static void setCategoryHeaderRGB(int r, int g, int b) {
+		categoryHeaderRed = r;
+		categoryHeaderGreen = g;
+		categoryHeaderBlue = b;
+	}
+	
+	public static void setColumnHeaderRGB(int r, int g, int b) {
+		columnHeaderRed = r;
+		columnHeaderGreen = g;
+		columnHeaderBlue = b;
 	}
 }

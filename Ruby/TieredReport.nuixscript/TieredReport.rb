@@ -26,6 +26,16 @@ LookAndFeelHelper.setWindowsIfMetal
 NuixConnection.setUtilities($utilities)
 NuixConnection.setCurrentNuixVersion(NUIX_VERSION)
 
+# This configures the color of the top most column headers
+# Color is specified as (red,green,blue) values can be 0-255
+ReportGenerator.setColumnHeaderRGB(8,73,255)
+
+# This configures the base color used in category headers of the report.  Additional
+# colors for sub-category header rows are then derived from this color by
+# calculating tints of this base color.
+# Color is specified as (red,green,blue) values can be 0-255
+ReportGenerator.setCategoryHeaderRGB(0,153,255)
+
 require 'json'
 
 # Swing label hacky fix
