@@ -47,6 +47,10 @@ def build_hacky_label(label,is_bold)
 	end
 end
 
+# Load user defined filtered tag aspects before we fetch list of aspect for user to
+# pick from in the settings dialog
+load File.join(script_directory,"FilteredTagNamesAspects.rb")
+
 # Load aspects
 item_aspects = ItemAspectFactory.getAspects
 # Generate any custom metadata related aspects user may have specified
