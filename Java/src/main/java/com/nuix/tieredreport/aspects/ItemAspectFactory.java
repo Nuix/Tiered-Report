@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
 
+import nuix.Case;
 import nuix.Item;
 
 /***
@@ -73,5 +74,9 @@ public class ItemAspectFactory {
 	
 	public static void addFilteredTagNamesAspect(String name, BiFunction<Item,List<String>,List<String>> tagModifierFunction) {
 		aspects.add(new FilteredTagNamesAspect(name, tagModifierFunction));
+	}
+	
+	public static void registerBasicScriptableAspect(String aspectName, String aspectReportLabel, BiFunction<Case,Item,Object> valueFunction) {
+		aspects.add(new BasicScriptableAspect(aspectName,aspectReportLabel,valueFunction));
 	}
 }
