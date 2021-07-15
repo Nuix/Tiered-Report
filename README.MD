@@ -104,6 +104,73 @@ These are aspects of items which you would like reported.  Each selected aspect 
 | Global Item Set Duplicate Status | Categorizes items based on whether they are a duplicate or original in any item set. If a given item is not present in any item set this will classify the item as `No Item Set`. |
 | Item Set Name and Duplicate Status | Categorizes items by the name of each item set they are present in and whether they are a duplicate or original in that item set. For example if an item is original in Item Set A, but a duplicate in Item Set B then this will categorize the item as Item Set A - Original and Item Set B - Duplicate. If this is nested below the aspect Item Set it will not show duplicates/originals for only that item set, but instead any item sets which contains the same items present in the given item set. |
 
+# Customizations
+
+## Custom Metadata Based Aspects
+
+By editing the file `CustomMetadataAspects.json` you can choose custom metadata fields to be includable in reports.  The file has the following structure:
+
+```json
+[
+    {
+        "enabled": false,
+        "field_name": "UnconfiguredTemplate1",
+        "report_label": "Unconfigured Template 1",
+        "value_if_missing": "No Value"
+    },
+    {
+        "enabled": false,
+        "field_name": "UnconfiguredTemplate2",
+        "report_label": "UnconfiguredTemplate2",
+        "value_if_missing": "No Value"
+    },
+    {
+        "enabled": false,
+        "field_name": "UnconfiguredTemplate3",
+        "report_label": "Unconfigured Template 3",
+        "value_if_missing": "No Value"
+    }
+]
+```
+
+The structure consists of an outermost array in which each element is an object with the following structure:
+
+| Key | Description |
+|-----|-------------|
+| `enabled` | Whether the given entry is enabled or not. |
+| `field_name` | Name of the custom metadata field to use. |
+| `report_label` | Label for the corresponding column in the report when used in a report. |
+| `value_if_missing` | If an item is missing the given custom metadata field, what value should be reported instead? |
+
+For each entry in this file, an item aspect is created upon script startup.  These choices will then appear in the script settings dialog along side the built in aspects.
+
+## Proprty Metadata Based Aspects
+
+Similar to **Custom Metadata Based Aspects** mentioned above, metadata property based item aspects can be included as well by editing `PropertyMetadataAspects.json`.
+
+## Custom Basic Aspects
+
+If you need something more complex that is not quite provided by values in custom metadata fields or metadata properties, you can also define code based item aspects in the file `BasicScriptableAspectDefinitions.rb`.  In this file you can register a scripted item aspect by calling the following method:
+
+```ruby
+ItemAspectFactory.registerBasicScriptableAspect(aspectName,aspectReportLabel,valueFunction)
+```
+
+| Argument | Description |
+|----------|-------------|
+| `aspectName` | Name of the item aspect as shown in the settings dialog. |
+| `aspectReportLabel` | Label for the resulting column in the report when this item aspect is used in a report. |
+| `valueFunction` | A bit of code which will receive an item and the Nuix case in which it resides.  This code is then expected to yield based a value classifying that item for the report. |
+
+For example, if I wanted to classify items in the report by how many characters are in their name, I could do the following:
+
+```ruby
+ItemAspectFactory.registerBasicScriptableAspect("Item Name Length","Name Length Chars") do |nuix_case,item|
+    next item.getLocalisedName.size
+end
+```
+
+Value yielded should be a basic data type such as String, Integer or Boolean (think basic data types that translate to Excel well).
 
 # License
 

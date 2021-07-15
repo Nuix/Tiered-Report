@@ -14,11 +14,11 @@
 # ItemAspectFactory.registerBasicScriptableAspect("Item Name Length","Name Length Chars") do |nuix_case,item|
 # 	next item.getLocalisedName.size
 # end
-
+#
 # ItemAspectFactory.registerBasicScriptableAspect("Descendant Count","Descendant Count") do |nuix_case,item|
 # 	next item.getDescendants.size
 # end
-
+#
 # ItemAspectFactory.registerBasicScriptableAspect("Child Count","Child Count") do |nuix_case,item|
 # 	next item.getChildren.size
 # end
