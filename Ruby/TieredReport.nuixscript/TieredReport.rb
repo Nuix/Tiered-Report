@@ -21,6 +21,7 @@ java_import "com.nuix.tieredreport.aspects.CustomMetadataAspect"
 java_import "com.nuix.tieredreport.aspects.PropertyMetadataAspect"
 java_import "com.nuix.tieredreport.FileSizeUnit"
 java_import "org.joda.time.DateTime"
+java_import "com.nuix.tieredreport.aspects.AbstractItemAspect"
 
 LookAndFeelHelper.setWindowsIfMetal
 NuixConnection.setUtilities($utilities)
@@ -51,8 +52,12 @@ end
 # pick from in the settings dialog
 load File.join(script_directory,"FilteredTagNamesAspects.rb")
 
+# Load user defined basic scriptable aspects
+load File.join(script_directory,"BasicScriptableAspectDefinitions.rb")
+
 # Load aspects
 item_aspects = ItemAspectFactory.getAspects
+
 # Generate any custom metadata related aspects user may have specified
 custom_metadata_aspect_settings_file = File.join(script_directory,"CustomMetadataAspects.json")
 if java.io.File.new(custom_metadata_aspect_settings_file).exists
@@ -63,6 +68,7 @@ if java.io.File.new(custom_metadata_aspect_settings_file).exists
 		end
 	end
 end
+
 # Generate any property metadata related aspects user may have specified
 property_metadata_aspect_settings_file = File.join(script_directory,"PropertyMetadataAspects.json")
 if java.io.File.new(property_metadata_aspect_settings_file).exists
