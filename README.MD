@@ -57,6 +57,7 @@ These are aspects of items which you would like reported.  Each selected aspect 
 |------|-------------|
 | Case Location | Categorizes items by the directory path of the case they came from. |
 | Case Name | Categorizes items by the name of the case they came from. |
+| Case GUID | Categorizes items by the GUID of the case they came from. |
 | Custodian | Categorizes items by the name of the custodian assigned to them. Items in which no custodian has been assigned will be categorized as `No Custodian`. |
 | Is Deleted | Categorizes items by `TRUE` or `FALSE` based on whether the item was marked as deleted when ingested. |
 | Is Encrypted | Categorizes items by `TRUE` or `FALSE` based on whether the item was marked as encrypted when ingested. |
