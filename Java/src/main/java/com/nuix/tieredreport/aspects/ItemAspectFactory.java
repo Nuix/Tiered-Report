@@ -16,6 +16,7 @@ import nuix.Item;
 public class ItemAspectFactory {
 	private static List<ItemAspect> aspects = new ArrayList<ItemAspect>();
 	static {
+		aspects.add(new CaseGUIDAspect());
 		aspects.add(new CaseNameAspect());
 		aspects.add(new CaseLocationAspect());
 		aspects.add(new EvidenceNameAspect());
